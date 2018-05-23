@@ -16,43 +16,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-    <script>
-        var teste = 2;
-        // function teste1(parametro1) {
-        //     var elemento = document.querySelector("#nome")
-
-        //     var meuArray = ["matt", "teste"]
-        //     if (elemento.value == "Matheus") {
-        //         document.querySelector("#acertou").style.display = "";
-
-        //     }
-        //     else {
-        //         document.querySelector("#errou").style.display = "";
-        //     }
-
-        function test2() {
-            var elemento = document.getElementById("cpf");
-
-            // var tr = document.getElementById("cpf").value>0;
-            if (/^(\d{3})(\.)?(\d{3})(\.)?(\d{3})(\-)(\d{2})$/.test(elemento.value)) {
-                alert("ACERRTOU")
-            }
-            else {
-                alert("errooou")
-            }
-        }
-        function teste3() {
-            var validEmail = document.getElementById("email")
-            if (/^([a-zA-Z1-9$&]{1,})(\@)(\w{1,})(\.)(com)$/.test(validEmail.value)) 
-            {
-                alert("EMAIL VALIDO,  se é o bixão mesmo")
-            }
-            else{
-                alert("digite dnv")
-            }
-        }
-
-    </script>
+   
 
     <!-- <style>
         body {
@@ -115,15 +79,21 @@
 
         <div class="col-md-8">
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="nome">Nome: </label>
-                <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp" placeholder="Digite seu nome">
+                <input type="text" class="form-control" id="nome" onblur="teste3()"  placeholder="Digite seu nome">
                 <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+            </div> -->
+
+            <div class="form-group">
+                    <label for="nome">Nome: </label>
+                    <input type="email" class="form-control" id="nome" onblur="teste4()" aria-describedby="nomeHelp" placeholder="Digite seu nome">
+                    <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
             </div>
 
             <div class="form-group">
                 <label for="sobrenome">Sobrenome: </label>
-                <input type="text" class="form-control" id="sobrenome" aria-describedby="sobrenomeHelp" placeholder="Digite seu sobrenome">
+                <input type="text" class="form-control" id="sobrenome" onblur="teste5()" aria-describedby="sobrenomeHelp" placeholder="Digite seu sobrenome">
                 <small id="sobrenomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
             </div>
 
@@ -196,7 +166,7 @@
 
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="email" class="form-control" id="email"  onblur="teste3()" aria-describedby="emailHelp" placeholder="Digite seu email">
+                <input type="email" class="form-control" id="email" onblur="teste3()" aria-describedby="emailHelp" placeholder="Digite seu email">
                 <small id="emailHelp" class="form-text text-muted">Não deixe a área em branco...</small>
             </div>
 
@@ -208,8 +178,80 @@
         </div>
 
 
-        <button type="button" onclick="test2()"onclick="teste3()" class="btn btn-danger" color>Salvar</button>
+        <button type="button" class="btn btn-danger">Salvar</button>
     </form>
 </body>
+
+<script>
+        var teste = 2;
+        // function teste1(parametro1) {
+        //     var elemento = document.querySelector("#nome")
+
+        //     var meuArray = ["matt", "teste"]
+        //     if (elemento.value == "Matheus") {
+        //         document.querySelector("#acertou").style.display = "";
+
+        //     }
+        //     else {
+        //         document.querySelector("#errou").style.display = "";
+        //     }
+
+        function test2() {
+            var elemento = document.getElementById("cpf");
+
+            // var tr = document.getElementById("cpf").value>0;
+            if (/^(\d{3})(\.)?(\d{3})(\.)?(\d{3})(\-)(\d{2})$/.test(elemento.value)) {
+                alert("ACERRTOU")
+            }
+            else {
+                alert("errooou")
+            }
+        }
+        function teste3() {
+            var validEmail = document.getElementById("email");
+            if (/^([a-zA-Z1-9$&]{1,})(\@)(\w{1,})(\.)(com)$/.test(validEmail.value)) {
+                alert("EMAIL VALIDO,  se é o bixão mesmo")
+            }
+            else {
+                alert("digite dnv")
+            }
+        }
+        // function rodolfinho() {
+        //     var elemento2 = document.getElementById("nome");
+        //     console.log(elemento2);
+        //     if (/^([a-zA-Z]{1,})$ /.test(elemento2.value)) {
+        //         alert("nome Valido");
+        //     }
+        //     else {
+        //         alert("digite dnv");
+        //     }
+        // }
+
+        function teste4() {
+            var validNome = document.getElementById("nome");
+            if (/^([a-zA-Z]{1,})$/.test(validNome.value)) {
+                alert("Nome correto")
+            }
+            else {
+                alert("digite dnv")
+            }
+        }
+        function teste5(){
+            var valideSobrenome = document.getElementById("sobrenome");
+            if (/^([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})/.text(valideSobrenome.value))
+            {
+                alert("sobrenome Possivel")
+            }
+                
+            else{
+            alert("vc digitou sobrenome incorreto")
+            }
+        }
+
+        
+
+
+
+    </script>
 
 </html>
