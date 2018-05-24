@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+            <label for="nome">Nome: </label>
+            <input type="email" class="form-control" id="nomeLogin" placeholder="Digite seu nome">
+            <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+        </div>
+        <div class="form-group">
+            <label for="email">senha: </label>
+            <input type="password" class="form-control" id="senhaLogin" placeholder="Digite seu senha">
+            <small id="senha-help" class="form-text text-muted">Não deixe a área em branco...</small>
+        </div>
+        <div class="form-group">
+            <a href="index.html">click aqui se não tiver cadastro</a>
+        </div>
+
+        <button type="button" onclick="validaSenhas()" class="btn btn-danger">Salvar</button>
+        <div id="alertaErro" class="alert alert-darger" role="alert" style="display:none;">
+                Alguma informação não é valida!
+            </div>
+    </form>
+</body>
+<script>
+    function validaSenhas() {
+        var meubj = JSON.parse(localStorage.getItem("usuario"))
+        var validasenhas = document.getElementById("senhaLogin").value;
+        var validanomes = document.getElementById("nomeLogin").value;
+        if (validasenhas == meubj.senha && validanomes == meubj.nome) {
+            alert("login feito")
+            window.location.href = "telainicial.html"
+
+        }
+        else {
+            var alerta = document.getElementById("alertaErro");
+            alerta.style.display = "block";
+        }
+    }
+</script>
+
+</html>

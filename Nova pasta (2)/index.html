@@ -16,7 +16,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-   
+
 
     <!-- <style>
         body {
@@ -27,7 +27,10 @@
 </head>
 
 <body>
-    <div class="pos-f-t">
+        <div class="col-md-4 offset-md-4">
+       <h1> <span class="badge badge-primary">Cadastro</span> </h1>
+       </div>
+    <!-- <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
                 <h1 class="text-white h4">Collapsed content</h1>
@@ -74,7 +77,7 @@
     </div>
     <div class="alert alert=fracasso" id="errou" style="display:none">
         <p>ERROU miseravi!,coloque um valor valido</p>
-    </div>
+    </div> -->
     <form>
 
         <div class="col-md-8">
@@ -85,12 +88,17 @@
                 <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
             </div> -->
 
-            <div class="form-group">
-                    <label for="nome">Nome: </label>
-                    <input type="email" class="form-control" id="nome" onblur="teste4()" aria-describedby="nomeHelp" placeholder="Digite seu nome">
-                    <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
-            </div>
 
+            <div class="form-group">
+                <label for="nome">Nome: </label>
+                <input type="email" class="form-control" id="nome" onblur="teste4()" aria-describedby="nomeHelp" placeholder="Digite seu nome">
+                <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+            </div>
+            <div class="form-group">
+                <label for="email">senha: </label>
+                <input type="password" class="form-control" id="senha" placeholder="Digite seu senha">
+                <small id="senha-help" class="form-text text-muted">Não deixe a área em branco...</small>
+            </div>
             <div class="form-group">
                 <label for="sobrenome">Sobrenome: </label>
                 <input type="text" class="form-control" id="sobrenome" onblur="teste5()" aria-describedby="sobrenomeHelp" placeholder="Digite seu sobrenome">
@@ -99,7 +107,7 @@
 
             <div class="form-group">
                 <label for="datanascimento">Data Nascimento: </label>
-                <input type="datetime" class="form-control" id="datanascimento" aria-describedby="datanascimentoHelp" placeholder="Digite a data de nascimento">
+                <input type="date" class="form-control" id="datanascimento" aria-describedby="datanascimentoHelp" placeholder="Digite a data de nascimento">
             </div>
 
             <div class="form-group">
@@ -113,7 +121,7 @@
 
             <div class="form-group">
                 <label for="logradouro">Logradouro: </label>
-                <input type="text" class="form-control" id="logradouro" aria-describedby="logradouroHelp" placeholder="Digite seu logradouro">
+                <input type="text" class="form-control" id="logradouro" onblur="teste6()" placeholder="Digite seu logradouro">
             </div>
 
             <div class="form-group">
@@ -178,80 +186,114 @@
         </div>
 
 
-        <button type="button" class="btn btn-danger">Salvar</button>
+        <button type="button" onclick="Senha()" onclick class="btn btn-danger">Salvar</button>
     </form>
 </body>
 
 <script>
-        var teste = 2;
-        // function teste1(parametro1) {
-        //     var elemento = document.querySelector("#nome")
+    var teste = 2;
+    // function teste1(parametro1) {
+    //     var elemento = document.querySelector("#nome")
 
-        //     var meuArray = ["matt", "teste"]
-        //     if (elemento.value == "Matheus") {
-        //         document.querySelector("#acertou").style.display = "";
+    //     var meuArray = ["matt", "teste"]
+    //     if (elemento.value == "Matheus") {
+    //         document.querySelector("#acertou").style.display = "";
 
-        //     }
-        //     else {
-        //         document.querySelector("#errou").style.display = "";
-        //     }
+    //     }
+    //     else {
+    //         document.querySelector("#errou").style.display = "";
+    //     }
 
-        function test2() {
-            var elemento = document.getElementById("cpf");
+    // var usuario = localStorage.getItem("usuario");
 
-            // var tr = document.getElementById("cpf").value>0;
-            if (/^(\d{3})(\.)?(\d{3})(\.)?(\d{3})(\-)(\d{2})$/.test(elemento.value)) {
-                alert("ACERRTOU")
-            }
-            else {
-                alert("errooou")
-            }
+    // if(usuario == null || usuario == ""){
+    //     alert("faça o login primeiro.")
+    //         window.location.href = "telaLogin.html"
+
+    // }
+
+    function test2() {
+        var elemento = document.getElementById("cpf");
+
+        // var tr = document.getElementById("cpf").value>0;
+        if (/^(\d{3})(\.)?(\d{3})(\.)?(\d{3})(\-)(\d{2})$/.test(elemento.value)) {
+            alert("ACERRTOU")
         }
-        function teste3() {
-            var validEmail = document.getElementById("email");
-            if (/^([a-zA-Z1-9$&]{1,})(\@)(\w{1,})(\.)(com)$/.test(validEmail.value)) {
-                alert("EMAIL VALIDO,  se é o bixão mesmo")
-            }
-            else {
-                alert("digite dnv")
-            }
+        else {
+            alert("errooou")
         }
-        // function rodolfinho() {
-        //     var elemento2 = document.getElementById("nome");
-        //     console.log(elemento2);
-        //     if (/^([a-zA-Z]{1,})$ /.test(elemento2.value)) {
-        //         alert("nome Valido");
-        //     }
-        //     else {
-        //         alert("digite dnv");
-        //     }
-        // }
+    }
+    function teste3() {
+        var validEmail = document.getElementById("email");
+        if (/^([a-zA-Z1-9$&]{1,})(\@)(\w{1,})(\.)(com)$/.test(validEmail.value)) {
+            alert("EMAIL VALIDO,  se é o bixão mesmo")
+        }
+        else {
+            alert("digite dnv")
+        }
+    }
+    // function rodolfinho() {
+    //     var elemento2 = document.getElementById("nome");
+    //     console.log(elemento2);
+    //     if (/^([a-zA-Z]{1,})$ /.test(elemento2.value)) {
+    //         alert("nome Valido");
+    //     }
+    //     else {
+    //         alert("digite dnv");
+    //     }
+    // 
 
-        function teste4() {
-            var validNome = document.getElementById("nome");
-            if (/^([a-zA-Z]{1,})$/.test(validNome.value)) {
-                alert("Nome correto")
-            }
-            else {
-                alert("digite dnv")
-            }
+
+    function teste4() {
+        var validNome = document.getElementById("nome");
+        if (/^([a-zA-Z]{1,})$/.test(validNome.value)) {
+            alert("Nome correto")
         }
-        function teste5(){
-            var valideSobrenome = document.getElementById("sobrenome");
-            if (/^([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})/.text(valideSobrenome.value))
-            {
-                alert("sobrenome Possivel")
-            }
-                
-            else{
+        else {
+            alert("digite dnv")
+        }
+    }
+    function teste5() {
+        var valideSobrenome = document.getElementById("sobrenome");
+        if (/^([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})(\s)?$/.test(valideSobrenome.value)) {
+            alert("sobrenome Possivel")
+        }
+
+        else {
             alert("vc digitou sobrenome incorreto")
-            }
         }
+    }
+    function teste6() {
+        var validaLogradouro = document.getElementById("logradouro")
+        if (/^([a-zA-Z]{1,})(\s{1,})?([a-zA-Z]{1,})?$/.test(validaLogradouro.value)) {
+            alert("deu bom parca")
+        }
+        else {
+            alert("digita dnv ae parca")
+        }
+    }
+    function Senha() {
+        var meuObjJson =
+            {
+                "nome": document.getElementById("nome").value,
+                "senha": document.getElementById("senha").value,
+                "idade": 25,
+                "endereco": {
+                    "rua": "minharua",
+                    "bairro": "meubairro"
+                }
+            }
+        console.log(JSON.stringify(meuObjJson))
+        localStorage.setItem("usuario", JSON.stringify(meuObjJson))
+        alert("login feito")
+        window.location.href = "telaLogin.html"
+    }
 
-        
+//^([0-9]{1,2})(\/)?(\-)?([0-9]{1,2})(\/)?(\-)?([0-9]{1,4})  validacao de data com / mas n validado se passar de 31//
 
 
 
-    </script>
+
+</script>
 
 </html>
