@@ -42,10 +42,24 @@
                 <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
             </div>
             <button type="button" class="btn btn-danger">Salvar</button>
+            <div id="alertaErro" class="alert alert-primary" role="alert" style="display:none;">
+                    Alguma informação não é valida!
+                </div>
         </div>
 
     </form>
 
 </body>
-
+<script>
+    function validaNome(){
+        var validaNome = document.getElementById("nome");
+        if (/^([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?$/.test(validNome.value)) {
+            var alertas = document.getElementById("alertaErro");
+            alertas.style.display = "block";
+        }
+        else {
+            alert("digite dnv")
+        }
+    }
+</script>
 </html>

@@ -17,6 +17,11 @@
 </head>
 
 <body>
+       
+    <div class="col-md-3 offset-md-4">
+            <h1>Matheus Mercados!
+                    <span class="badge badge-primary">login</span>
+                </h1>
     <form>
         <div class="form-group">
             <label for="nome">Nome: </label>
@@ -33,10 +38,11 @@
         </div>
 
         <button type="button" onclick="validaSenhas()" class="btn btn-danger">Salvar</button>
-        <div id="alertaErro" class="alert alert-darger" role="alert" style="display:none;">
+        <div id="alertaErro" class="alert alert-primary" role="alert" style="display:none;">
                 Alguma informação não é valida!
             </div>
     </form>
+    </div>
 </body>
 <script>
     function validaSenhas() {
