@@ -15,33 +15,41 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
 </head>
+<style>
+    body {
+        background-image: url(f505f5040274b97cd5114f9ff3ab8b99.jpg);
+    }
+</style>
 
 <body>
-       
+    <div class="col-md-12 offset-md-12">
+        <h1>
+            <span style=" width: 100%;" class="badge badge-pill badge-warning">Mercado do Prado</span>
+        </h1>
+    </div>
     <div class="col-md-3 offset-md-4">
-            <h1>Matheus Mercados!
-                    <span class="badge badge-primary">login</span>
-                </h1>
-    <form>
-        <div class="form-group">
-            <label for="nome">Nome: </label>
-            <input type="email" class="form-control" id="nomeLogin" placeholder="Digite seu nome">
-            <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
-        </div>
-        <div class="form-group">
-            <label for="email">senha: </label>
-            <input type="password" class="form-control" id="senhaLogin" placeholder="Digite seu senha">
-            <small id="senha-help" class="form-text text-muted">Não deixe a área em branco...</small>
-        </div>
-        <div class="form-group">
-            <a href="index.html">click aqui se não tiver cadastro</a>
-        </div>
 
-        <button type="button" onclick="validaSenhas()" class="btn btn-danger">Salvar</button>
-        <div id="alertaErro" class="alert alert-primary" role="alert" style="display:none;">
+
+        <form>
+            <div class="form-group">
+                <label class="badge badge-pill badge-danger"style="width 16%;" for="nome">Nome: </label>
+                <input type="email" class="form-control" id="nomeLogin" placeholder="Digite seu nome">
+                <small id="nomeHelp" class="badge badge-pill badge-danger">Não deixe a área em branco...</small>
+            </div>
+            <div class="form-group">
+                <label class="badge badge-pill badge-danger" for="email">senha: </label>
+                <input type="password" class="form-control" id="senhaLogin" placeholder="Digite seu senha">
+                <small id="senha-help" class="badge badge-pill badge-danger">Não deixe a área em branco...</small>
+            </div>
+            <div class="form-group">
+                <a href="index.html">click aqui se não tiver cadastro</a>
+            </div>
+
+            <button type="button" onclick="validaSenhas()" class="btn btn-danger">Salvar</button>
+            <div id="alertaErro" class="alert alert-primary" role="alert" style="display:none;">
                 Alguma informação não é valida!
             </div>
-    </form>
+        </form>
     </div>
 </body>
 <script>

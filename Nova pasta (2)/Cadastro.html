@@ -16,6 +16,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
 </head>
+  <style>
+        body {
+            background-image: url(bd267448382b10570aa6bfde4eb03344.jpg);
+        }
+    </style> 
 
 <body>
     <form>
@@ -27,39 +32,60 @@
             <div class="form-group">
                 <span class="badge badge-secondary">Nome</span>
                 <input type="text" class="form-control" id="nome" placeholder="Digite o nome do produto">
-                <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+                <small id="nomeHelp" class="badge badge-secondary">Não deixe a área em branco...</small>
             </div>
-            
+
             <div class="form-group">
                 <span class="badge badge-secondary">Preço</span>
-                <input type="email" class="form-control" id="nome"  aria-describedby="nomeHelp" placeholder="digite o preço">
-                <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+                <input type="number" class="form-control" id="preco" aria-describedby="nomeHelp" placeholder="digite o preço">
+                <small id="nomeHelp" class="badge badge-secondary">digite com . (ex 12.00 ou 1.000.00)</small>
             </div>
-           
+
             <div class="form-group">
                 <span class="badge badge-secondary">Descrição</span>
-                <input type="email" class="form-control" id="nome"   placeholder="Digite a descrição do produto">
-                <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+                <input type="email" class="form-control" id="descricao" placeholder="Digite a descrição do produto">
+                <small id="nomeHelp" class="badge badge-secondary">Não deixe a área em branco...</small>
+
             </div>
-            <button type="button" class="btn btn-danger">Salvar</button>
+            <button type="button" onclick="validaNome()" class="btn btn-danger">Salvar</button>
             <div id="alertaErro" class="alert alert-primary" role="alert" style="display:none;">
-                    Alguma informação não é valida!
-                </div>
-        </div>
+                Nome não é valido!
+            </div>
+
 
     </form>
 
 </body>
 <script>
-    function validaNome(){
-        var validaNome = document.getElementById("nome");
-        if (/^([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?$/.test(validNome.value)) {
-            var alertas = document.getElementById("alertaErro");
-            alertas.style.display = "block";
+    function validaNome() {
+     
+        var validaNome = document.getElementById("nome").value;
+        var validaPreco = document.getElementById("preco").value;
+        var validaDescricao = document.getElementById("descricao").value;
+        if (/^([a-zA-Z]{1,})(\s)?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?(\s)?([a-zA-Z]{1,})?$/.test(validaNome.value)) {
+            // if (/^([0-9]){1,}(\.)([0-9]){1,2}?$/.test(validaPreco.value)) {
+
+            var meObjJson =
+                {
+                    "nome": document.getElementById("nome").value,
+                    "preco": document.getElementById("preco").value,
+                    "descricao": document.getElementById("descricao").value
+                }
+            console.log(JSON.stringify(meObjJson))
+            localStorage.setItem("produto", JSON.stringify(meObjJson))
+            alert("Cadastro feito")
+            window.location.href = "telainicial.html"
+            //     }
+            // else {
+            //     alert("o preço esta errado tente com pontos(ex 12.00 ou 1.000.00")
+            // }
+
         }
         else {
-            alert("digite dnv")
+            var alerta = document.getElementById("alertaErro");
+            alerta.style.display = "block";
         }
     }
 </script>
+
 </html>
