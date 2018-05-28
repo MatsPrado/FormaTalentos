@@ -17,32 +17,71 @@
 </head>
 
 <style>
-        body {
-            background-image: url(f505f5040274b97cd5114f9ff3ab8b99.jpg);
-        }
-    </style>
+    body {
+        background-image: url(f505f5040274b97cd5114f9ff3ab8b99.jpg);
+    }
+</style>
+
 <body>
+    <div class="container">
 
+        <form>
+            <div class="col-md-12 offset-md-12">
+                <h1>
 
-    <form>
-        <div class="col-md-12 offset-md-12">
-            <h1>
-
-                <span style=" width: 100%;" class="badge badge-pill badge-warning">Mercado do Prado</span>
-            </h1>
-            <div class="form-group">
-                <h1>bem-vindo ao nosso site!</h1>
-                <P></P>
-                <h3>Somos o melhor mercado da região , você dono de sua franquia deseja ver seu<p></p> cadastro de seu produto?</h3>
+                    <span style=" width: 100%;" class="badge badge-pill badge-warning">Mercado do Prado</span>
+                </h1>
+                <div style="color: brown" class="group">
+                    <h1>bem-vindo ao nosso site!</h1>
+                    <P></P>
+                    <h3>Somos o melhor mercado da região , você dono de sua franquia deseja ver seu
+                        <p></p> cadastro de seu produto?</h3>
+                </div>
+                <button type="button" onclick="MostrarTabela();" class="btn btn-danger">click aqui</button>
+        </form>
+        <p>
+            <p></p>
+        </p>
+        <class="badge badge-primary">
+            <a href="Cadastro.html"> se deseja cadastrar um produto em seu mercado click aqui!</span>
+            </a>
             </div>
-            <button type="button" onclick="validaSenhas()" class="btn btn-danger">click aqui</button>
-    </form>
-    <p><p></p></p>
-    <class="badge badge-primary">
-            <a href="Cadastro.html"> se deseja cadastrar um produto em seu mercado click aqui!</span></a>
-        </div>
-</body>
-<script>
+            <table id="tabela" class="table table-sm table-dark" style="display:none;">
+                <thead>
+                    <tr>
+                        <th scope="col">nome</th>
+                        <th scope="col">preço</th>
+                        <th scope="col">descricao</th>
 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td ></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+</body>
+</div>
+<script>
+    function MostrarTabela() {
+        var tabela = document.getElementById("tabela");
+        var tbody = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+        var tds = document.getElementById("tabela").getElementsByTagName("td");
+
+        tds[0];
+        tds[1];
+        tds[2];
+        var produto = JSON.parse(localStorage.getItem("produto"));
+        tds[0].innerHTML = produto.nome;
+        tds[1].innerHTML = produto.preco;
+        tds[2].innerHTML = produto.descricao;
+        tabela.style.display = "block";
+        console.log(tbody);
+    }
 </script>
+
 </html>
