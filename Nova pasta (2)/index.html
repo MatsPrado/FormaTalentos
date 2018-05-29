@@ -91,8 +91,10 @@
 
             <div class="form-group">
                 <label for="nome">Nome: </label>
-                <input type="email" class="form-control" id="nome" onblur="teste4()" aria-describedby="nomeHelp" placeholder="Digite seu nome">
+                <input type="email" class="form-control" id="nome" onKeyDown="Mascara(this,nome);" onKeyPress="Mascara(this,nome);"
+                onKeyUp="Mascara(this,nome);validaCpf(nome)" placeholder="Digite seu nome">
                 <small id="nomeHelp" class="form-text text-muted">Não deixe a área em branco...</small>
+                <div id="divErradoCerto1" style="display:inline"></div>
             </div>
             <div class="form-group">
                 <label for="email">senha: </label>
@@ -112,7 +114,9 @@
 
             <div class="form-group">
                 <label for="cpf">CPF: </label>
-                <input type="text" class="form-control" id="cpf" onblur="test2()" aria-describedby="cpfHelp" placeholder="Digite seu CPF">
+                <input type="text" class="form-control" id="cpf" onKeyDown="Mascara(this,Cpf);" onKeyPress="Mascara(this,Cpf);"
+                onKeyUp="Mascara(this,Cpf);validaCpf(this)" aria-describedby="cpfHelp" placeholder="Digite seu CPF">
+                <div id="divErradoCerto" style="display:inline"></div>
             </div>
 
             <div class="form-group">
@@ -211,18 +215,52 @@
     //         window.location.href = "telaLogin.html"
 
     // }
+/*Função Pai de Mascaras*/
+function Mascara(o, f) {
+	v_obj = o
 
-    function test2() {
-        var elemento = document.getElementById("cpf");
+	v_fun = f
 
-        // var tr = document.getElementById("cpf").value>0;
-        if (/^(\d{3})(\.)?(\d{3})(\.)?(\d{3})(\-)(\d{2})$/.test(elemento.value)) {
-            alert("ACERRTOU")
-        }
-        else {
-            alert("errooou")
-        }
-    }
+	setTimeout("execmascara()", 1)
+}
+
+
+
+/*Função que Executa os objetos*/
+function execmascara() {
+	v_obj.value = v_fun(v_obj.value)
+}
+function Cpf(v) {
+
+	v = v.replace(/\D/g, "")
+
+	v = v.replace(/(\d{3})(\d)/, "$1.$2")
+
+	v = v.replace(/(\d{3})(\d)/, "$1.$2")
+
+	v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+
+	return v
+}
+function validaCpf(objeto) {
+	var cpf = objeto.value;
+	var pattern = new RegExp(/^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/);
+
+	if (cpf != "") {
+		if (pattern.test(cpf)) {
+			objeto.style.border = "green solid 2px";
+			$("#divErradoCerto").hmtl= `<img src="check.png" style="width:20px;height:20px;" />`;
+		}
+		else {
+			objeto.style.border = "red solid 2px";
+			$("#divErradoCerto").hmtl = `<img src="x.png" style="width:20px;height:20px;" />`;
+		}
+	}
+	else {
+		objeto.style.border = "";
+		document.querySelector("#divErradoCerto").innerHTML = "";
+	}
+}
     function teste3() {
         var validEmail = document.getElementById("email");
         if (/^([a-zA-Z1-9$&]{1,})(\@)(\w{1,})(\.)(com)$/.test(validEmail.value)) {
@@ -232,18 +270,6 @@
             alert("digite dnv")
         }
     }
-    // function rodolfinho() {
-    //     var elemento2 = document.getElementById("nome");
-    //     console.log(elemento2);
-    //     if (/^([a-zA-Z]{1,})$ /.test(elemento2.value)) {
-    //         alert("nome Valido");
-    //     }
-    //     else {
-    //         alert("digite dnv");
-    //     }
-    // 
-
-
     function teste4() {
         var validNome = document.getElementById("nome");
         if (/^([a-zA-Z]{1,})$/.test(validNome.value)) {
