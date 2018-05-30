@@ -8,55 +8,110 @@
     <title>AJAX</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <script src="./scripts/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
 </head>
 
 <body>
-    <table id="classe" class="table">
-        <thead class="thead-dark">
-            <tr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-6">
+                <table id="classe" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>nome</th>
+                            <th>Sabor</th>
+                            <th>descrição</th>
+                            <th>Quantidade</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
 
-                <th>nome</th>
-                <th>Preço</th>
-                <th>descrição</th>
-                <th>botão</th>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Add um novo
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Pastel!!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Pastel Maroto
+                    <form>
+                        <div class="form-group">
+                            <label class="badge badge-pill badge-danger" style="width 16%;" for="nome">Nome </label>
+                            <input type="text" class="form-control" id="nome" placeholder="Digite o Nome">
+                        </div>
+                        <div class="form-group">
+                            <label class="badge badge-pill badge-danger" style="width 16%;" for="nome">Sabor</label>
+                            <input type="text" class="form-control" id="sabor" placeholder="Digite a Sabor">
+                        </div>
+                        <div class="form-group">
+                            <label class="badge badge-pill badge-danger" style="width 26%;" for="nome">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" placeholder="Digite a Descrição">
+                        </div>
+                        <div class="form-group">
+                            <label class="badge badge-pill badge-danger" style="width 26%;" for="nome">Preco</label>
+                            <input type="number" class="form-control" id="preco" placeholder="Digite a Quantidade">
 
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-
-    </table>
-<function ></function>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="ADD()" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script>
-    function criar() {
-        $.ajax({
-            url: 'https://talentosapipastel.herokuapp.com/pastel',
-            type: 'get', //get, post, put, delete
-            dataType: 'json',
-            contentType: "application/json",
-            crossDomain: true,
-            //data: JSON.stringify(json),
-        }).done(function (data) {
-            alert("ate aqui foi")
-            var test = $("#classe tbody")
-            var but = $("#classe tbody button")
-            for (var cont = 0; cont < data.length; cont++) {
-                test.append("<tr>")
-                test.append("<td>" + data[cont].nome + "</td>");
-                test.append("<td>" + data[cont].preco + "</td>");
-                test.append("<td>" + data[cont].descricao + "</td>");
-                test.append("<td><button type='button' id='botao'onclick='Delete(" + data[cont].id + ")' class='btn btn-danger'>Salvar</button></td>");
-                // test.append(
-                // test.append("<td>")+ ;
-            }
-        }).fail(function (jqXHR, textStatus, error) {
-            console.log("vish deu ruim")
+      var table = $("#classe").DataTable();
+    function MinhaFunc() {
+        var MeuButao = function (data, type, full, meta) {
+            var btoExcluir = "<button type='button' id='botao'onclick='Delete(" + full.id + ")' class='btn btn-danger'>Excluir</button>";
+            return btoExcluir;
+        }
+        table.destroy();
+         table = $("#classe").DataTable({
+            "ajax": {
+                "url": 'https://talentosapipastel.herokuapp.com/pastel',
+                "type": 'get', //get, post, put, delete
+                "dataType": 'json',
+                "dataSrc": "",
+                "contentType": "application/json",
+                "crossDomain": true
+            },
+            "columns": [
+                { "data": "nome", "width": "15%" },
+                { "data": "sabor", "width": "20%" },
+                { "data": "descricao", "width": "45%" },
+                { "data": "preco", "width": "8%" },
+                //{ "data": "sabor", "width": "20%"},
+                { "render": MeuButao, "width": "20%" }
+            ],
+            "oLanguage": {
+                "sLoadingRecords": "Aguarde..",
+                "sSearch": "Pesquisa:",
+                "sNext": "Proxima Pagina"
+            },
+            "order": [[3, 'asc']],
+            responsive: true
         });
     }
     function Delete(num) {
@@ -70,14 +125,44 @@
         }).done(function (data) {
             var test1 = $("#classe tbody")
             $("#classe tbody").html("")
-            criar();
+            MinhaFunc();
+
+
         }
         ).fail(function (jqXHR, textStatus, error) {
 
         });
-
+    
     }
-    criar();
+    function ADD() {
+        var pastel = {
+            "nome": $("#nome").val(),
+            "sabor": $("#sabor").val(),
+            "descricao": $("#descricao").val(),
+            "preco": $("#preco").val()
+
+        }
+        $.ajax({
+            url: 'https://talentosapipastel.herokuapp.com/pastel',
+            type: 'post',
+            dataType: 'json',
+            contentType: "application/json",
+            crossDomain: true,
+            data: JSON.stringify(pastel)
+        }).done(function (data) {
+            $('#classe tbody')
+            MinhaFunc();
+            $("#exampleModal").modal("hide");
+
+        }).fail(function (jqXHR, textStatus, error) {
+            alert("Erro");
+        });
+    }
+
+    $(document).ready(function(){
+        MinhaFunc();
+    });
+
 
 </script>
 
