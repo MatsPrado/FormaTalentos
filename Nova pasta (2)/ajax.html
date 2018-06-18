@@ -37,58 +37,58 @@
                 </table>
             </div>
         </div>
-    
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Add um novo
-    </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Pastel!!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Pastel Maroto
-                    <form>
-                        <div class="form-group">
-                            <label class="badge badge-pill badge-danger" style="width 16%;" for="nome">Nome </label>
-                            <input type="text" class="form-control" id="nome" placeholder="Digite o Nome">
-                        </div>
-                        <div class="form-group">
-                            <label class="badge badge-pill badge-danger" style="width 16%;" for="nome">Sabor</label>
-                            <input type="text" class="form-control" id="sabor" placeholder="Digite a Sabor">
-                        </div>
-                        <div class="form-group">
-                            <label class="badge badge-pill badge-danger" style="width 26%;" for="nome">Descrição</label>
-                            <input type="text" class="form-control" id="descricao" placeholder="Digite a Descrição">
-                        </div>
-                        <div class="form-group">
-                            <label class="badge badge-pill badge-danger" style="width 26%;" for="nome">Preco</label>
-                            <input type="number" class="form-control" id="preco" placeholder="Digite a Quantidade">
 
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" onclick="ADD()" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Add um novo
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Pastel!!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Pastel Maroto
+                        <form>
+                            <div class="form-group">
+                                <label class="badge badge-pill badge-danger" style="width 16%;" for="nome">Nome </label>
+                                <input type="text" class="form-control" id="nome" placeholder="Digite o Nome">
+                            </div>
+                            <div class="form-group">
+                                <label class="badge badge-pill badge-danger" style="width 16%;" for="nome">Sabor</label>
+                                <input type="text" class="form-control" id="sabor" placeholder="Digite a Sabor">
+                            </div>
+                            <div class="form-group">
+                                <label class="badge badge-pill badge-danger" style="width 26%;" for="nome">Descrição</label>
+                                <input type="text" class="form-control" id="descricao" placeholder="Digite a Descrição">
+                            </div>
+                            <div class="form-group">
+                                <label class="badge badge-pill badge-danger" style="width 26%;" for="nome">Preco</label>
+                                <input type="number" class="form-control" id="preco" placeholder="Digite a Quantidade">
+
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="ADD()" class="btn btn-primary">Salvar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 <script>
-      var table = $("#classe").DataTable();
+    var table = $("#classe").DataTable();
     function MinhaFunc() {
         var MeuButao = function (data, type, full, meta) {
             var btoExcluir = "<button type='button' id='botao'onclick='Delete(" + full.id + ")' class='btn btn-danger'>Excluir</button>";
             return btoExcluir;
         }
         table.destroy();
-         table = $("#classe").DataTable({
+        table = $("#classe").DataTable({
             "ajax": {
                 "url": 'https://talentosapipastel.herokuapp.com/pastel',
                 "type": 'get', //get, post, put, delete
@@ -132,7 +132,7 @@
         ).fail(function (jqXHR, textStatus, error) {
 
         });
-    
+
     }
     function ADD() {
         var pastel = {
@@ -159,7 +159,7 @@
         });
     }
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         MinhaFunc();
     });
 
